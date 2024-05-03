@@ -1,6 +1,6 @@
 class DashBoardPage{
     elementsGeneral ={
-        addImageBtn: ()=>cy.get('[data-cy="image-edit"]'),
+        addImageBtn: ()=>cy.get('.relative>[data-cy="image-edit"]'),
         editUserInfoBtn: ()=>cy.get('[data-cy="user-edit"]'),
         summaryUiBtn: ()=>cy.get('[data-cy="summary-edit"]'),
         langUiEditBtn: ()=>cy.get('[data-cy="languages-edit"]'),
@@ -20,6 +20,9 @@ class DashBoardPage{
         inputUserName: ()=>cy.get('[name="userName"]'), 
         inputPhone: ()=>cy.get('[name="phone"]'),
         inputCountry: ()=>cy.get('[name="countryCode"]'),
+        btnSubmitUserInfo: ()=>cy.get('[data-cy="userInfo-edit"]'),
+        nameLiUserInfo: ()=>cy.get('.grid > :nth-child(1)'),
+        errorUserName: ()=>cy.get(':nth-child(2) > #customer-error > .mt-2'),
     }
 
     elementsSummary = {
@@ -57,6 +60,11 @@ class DashBoardPage{
     elementsSoft = {
         addSoftBtn: ()=>cy.get('[data-cy="add-soft"]'), 
         submitSoftBtn: ()=>cy.get('[data-cy="submit-soft"]'),
+    }
+
+    elementsAvatar = {
+        imageFile: ()=>cy.get('[data-cy="image-file"]'),
+        imagesubmit: ()=>cy.get('[data-cy="image-submit"]'),
     }
 
     openImageForm(){
@@ -113,6 +121,34 @@ class DashBoardPage{
 
     clickSubmitFinish(){
         this.elementsGeneral.submitfinish().click();
+    }
+
+    typeNameUserInfo(name){
+        this.elementsUserInfo.inputName().focus().clear().type(name);
+    }
+
+    typeUserName(userName){
+        this.elementsUserInfo.inputUserName().focus().clear().type(userName);
+    }
+
+    typePhoneUserInfo(phone){
+        this.elementsUserInfo.inputPhone().focus().clear().type(phone);
+    }
+
+    selectCountry(country){
+        this.elementsUserInfo.inputCountry().select(country);
+    }
+
+    clickEditUserInfo(){
+        this.elementsUserInfo.btnSubmitUserInfo().click();
+    }
+
+    addAvatarFile(file){
+        this.elementsAvatar.imageFile().selectFile(file);
+    }
+
+    clickSubmitavatar(){
+        this.elementsAvatar.imagesubmit().click();
     }
 
 

@@ -1,7 +1,6 @@
 
 import HomePage from "../home/pages/homepage";
 import DashBoardPage from "./dashboardpage";
-import userResume from '../../../fixtures/';
 
 describe("Go To DashBoard new user",()=>{
      beforeEach("login users",()=>{
